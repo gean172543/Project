@@ -1,0 +1,35 @@
+//ดูข้อมูลทั้งหมดในdatabase
+GET http://localhost:5000/subscribers
+
+//ดูข้อมูลในdatabase โดยเช็คแต่ละID
+###
+GET http://localhost:5000/subscribers/62622d552b0c199c76378a68
+
+//เพิ่มข้อมูลเข้าbatabase
+###
+POST http://localhost:5000/register
+Content-Type: application/json
+
+{
+              "name":"admin",
+              "username":"test",
+              "password":"test",
+              
+}
+
+//ลบข้อมูลในbatabase ตามID
+###
+DELETE http://localhost:5000/subscribers/62650827df95ea3181614c64
+
+//updateข้อมูลในbatabase ตามID
+###
+PATCH http://localhost:5000/subscribers/62640f5220fcbb5f108e566c
+Content-Type: application/json
+
+{
+             "name":"kantapphon",
+              "username":"Twin001",
+              "password":"123456"
+              
+
+}
