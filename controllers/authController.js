@@ -73,3 +73,23 @@ exports.Register = async (req, res, next) => {
     res.redirect('/register')
   }
 }
+
+exports.RegisterAdmin = async (req, res, next) => {
+  // pass in request data here to create user from user schema
+  try {
+    const salt = await bcrypt.genSalt(10)
+    const hashPass = await bcrypt.hash(req.body.password, salt)
+    const newUser = await User.create({
+      name: req.body.name,
+      username: req.body.username,
+      password: hashPass
+
+    })
+    res.redirect('/admin')
+    // createUserToken(newUser, 201, req, res)
+    // if user can't be created, throw an error
+  } catch (err) {
+    next(err)
+    res.redirect('/member_add')
+  }
+}
