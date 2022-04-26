@@ -4,6 +4,8 @@ const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
 const authRouter = require('./routes/login')
+const controller = require('./controllers/controller')
+const services = require('./servise/listser')
 const bodyParser = require('body-parser')
 app.set('views', './views')
 app.set ('view-engine', 'ejs')
@@ -26,7 +28,7 @@ app.get("/",(req, res) =>{
 app.get('/login',(req,res) =>{
     res.render('login.ejs')
 })
-
+app.get('/api/users', controller.find)
 app.get('/register',(req,res) =>{
   res.render('register.ejs')
 })
@@ -42,9 +44,12 @@ app.get('/room2',(req,res) =>{
 app.get('/index2',(req,res) =>{
   res.render('index2.ejs')
 })
+// app.get('/admin', (services.homeRoutes))
+
 app.get('/admin',(req,res) =>{
   res.render('admin.ejs')
 })
+
 app.get('/member_add',(req,res) =>{
   res.render('member_add.ejs')
 })
@@ -64,7 +69,6 @@ app.post('/sparkall',(req,res) =>{})
 app.post('/room1',(req,res) =>{})
 app.post('/room2',(req,res) =>{})
 app.post('/index2',(req,res)=>{})
-app.post('/admin',(req,res)=>{})
 app.post('/member_add',(req,res)=>{})
 app.post('/room',(req,res)=>{})
 app.post('/room_add',(req,res)=>{})
